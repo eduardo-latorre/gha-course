@@ -1,0 +1,10 @@
+# Accessing metadata in Github
+# Get context info and using expressions
+name: Output information
+on: workflow_dispatch
+jobs:
+  info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output Github context
+        run: echo "${{ toJSON(github) }}" # Printing object to json
