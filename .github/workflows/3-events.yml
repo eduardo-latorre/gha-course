@@ -1,0 +1,16 @@
+# Events
+# To have more control
+# - Activity Type
+# - Filter 
+name: Events workflow
+on:
+  pull_request: # Managing a specific event
+    types:
+      - opened # Type of event
+  workflow_dispatch: # No mandatory configuration
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output event data
+        run: echo "${{ toJSON(github.event) }}" # Printing events
