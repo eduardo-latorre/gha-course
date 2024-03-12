@@ -36,6 +36,13 @@
 name: Test Project
 on: push
 jobs:
+  first-job: 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Greeting
+        run: |
+          echo "Hello"
+          echo "Bye!" 
   test:
     runs-on: ubuntu-latest
     steps:
