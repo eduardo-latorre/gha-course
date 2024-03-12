@@ -43,7 +43,7 @@ jobs:
         uses: actions/checkout@v3 # uses is for using action only
         # with: # with to configure the action
       - name: Install NodeJS
-        uses: actions/setup-node@3 # Already installed
+        uses: actions/setup-node@v3 # Already installed
         with:
           node-version: 18
       - name: Install dependencies
