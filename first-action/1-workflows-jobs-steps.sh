@@ -20,5 +20,5 @@ git init
 git checkout -b main
 git add .
 git commit -m "Initial commit"
-git remote add origin git@github.com:eduardo-latorre/gha-course.git
+git remote add origin eduardo-latorre@github.com:eduardo-latorre/gha-course.git
 git push origin main

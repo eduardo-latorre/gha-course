@@ -6,7 +6,9 @@ jobs:
    # Defined the runner 
     runs-on: ubuntu-latest
     steps:
-      - name: Print greeting
+      - name: Print Greeting
         run: echo "Hello World" 
-      - name: Print good bye
-        run: echo "Done... bye!"
+      - name: Mutiple Commands
+        run: |
+          echo "First, multiple command"
+          echo "Done... bye!"
