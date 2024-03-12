@@ -58,6 +58,7 @@ jobs:
       - name: Run tests
         run: npm test
   deploy:
+    needs: test # Sequential run, or ['job1', 'job2'] for multiple
     runs-on: ubuntu-latest
     steps:
       - name: Get code
