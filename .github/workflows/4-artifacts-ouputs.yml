@@ -49,6 +49,6 @@ jobs:
       - name: Output content # The download action will locate in the dist-files folder
         run: ls
       - name: Output filename # Using build Output
-        run: echo "${{ need.build.outputs.script-file }}"
+        run: echo "${{ needs.build.outputs.script-file }}"
       - name: Deploy
         run: echo "Deploying..."
