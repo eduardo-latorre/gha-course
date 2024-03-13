@@ -1,6 +1,6 @@
 # Accessing metadata in Github
 # Get context info and using expressions
-name: 2 Output information
+name: 2 Output Information
 on: workflow_dispatch
 jobs:
   info:

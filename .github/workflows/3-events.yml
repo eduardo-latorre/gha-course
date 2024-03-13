@@ -11,7 +11,7 @@
 # - Cancelling is manual in the UI
 # - Skipping: in the commit -m "blahblah [skip ci]" check doc to use 
 #   these annotations
-name: 3 Events workflow
+name: 3 Workflow Events
 on:
   pull_request: # Managing a specific event
     types:
