@@ -1,16 +1,43 @@
 # Events
 # To have more control
 # - Activity Type
-# - Filter 
-name: Events workflow
+# - Filters: push, pull or call
+
+# Forks
+# By default, PR based on forks do not trigger a workflow
+# It will need to be approved first to run
+
+# Cancelling and Skipping
+# - Cancelling is manual in the UI
+# - Skipping: in the commit -m "blahblah [skip ci]" check doc to use 
+#   these annotations
+name: 3 Events workflow
 on:
   pull_request: # Managing a specific event
     types:
-      - opened # Type of event
+      - opened # Will trigger the workflow when a new PR is opened
+    branches: # Two conditions, opened and pointing to main
+      - main
   workflow_dispatch: # No mandatory configuration
+  push:
+    branches: # Using filters, to trigger the workflow under specfic 
+      - main
+      - 'dev-*' # 
+      - 'feat/**'
+    # paths: # To specify changes in a specific path to trigger the workflow
+    paths-ignore: # To prevent the workflow to be trigerred when there're changes in this file
+      - '.github/workflows/*'
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Output event data
         run: echo "${{ toJSON(github.event) }}" # Printing events
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm ci
+      - name: Test code
+        run: npm run build
+      - name: Deploy project
+        run: echo "Deploying..."

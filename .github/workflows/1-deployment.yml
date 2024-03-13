@@ -33,7 +33,7 @@
 
 # DEPENDENCIES
 # The software used to run stuff has already intalled dependencies, like node for instance
-name: Deploy Project
+name: 1 Deploy Project
 on: [push, workflow_dispatch] # Multiple events, add manual button
 jobs:
   first-job: 
