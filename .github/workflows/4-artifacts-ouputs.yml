@@ -1,6 +1,7 @@
 # Artifact: used to share files
 # Outputs: information that every job outputs
 # Caching: Look in the docs in Github to see all the folder could be cached
+# if the code has an update, cache will automatically discard the cash and will reinstall dependencies
 # Using Github expression ${{ expression-name }}
 name: 4 Artifacts and Outputs
 on:
