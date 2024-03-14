@@ -17,7 +17,7 @@ jobs:
         uses: action/cache@v3
         with:
           path: ~/.npm # Setting the path that needs to be cached
-          key: deps-node-module-${{ hashFile('**/package-lock.json') }} # Used to retrive the value in the future
+          key: deps-node-module-${{ hashFiles('**/package-lock.json') }} # Used to retrive the value in the future
       - name: Install dependencies # if the ~/.npm folder exist this step will be skipped
         run: npm ci 
       - name: Test code
