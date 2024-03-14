@@ -14,7 +14,7 @@ jobs:
       - name: Get code
         uses: actions/checkout@v3
       - name: Cache dependencies # Caching dependencies
-        uses: action/cache@v3
+        uses: actions/cache@v3
         with:
           path: ~/.npm # Setting the path that needs to be cached
           key: deps-node-module-${{ hashFiles('**/package-lock.json') }} # Used to retrive the value in the future
@@ -33,7 +33,7 @@ jobs:
       - name: Get code
         uses: actions/checkout@v3
       - name: Cache dependencies # Caching dependencies
-        uses: action/cache@v3
+        uses: actions/cache@v3
         with:
           path: ~/.npm # Setting the path that needs to be cached
           key: deps-node-module-${{ hashFiles('**/package-lock.json') }} # Used to retrive the value in the future
