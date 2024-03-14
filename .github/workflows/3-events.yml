@@ -13,20 +13,20 @@
 #   these annotations
 name: 3 Workflow Events
 on:
-  pull_request: # Managing a specific event
-    types:
-      - opened # Will trigger the workflow when a new PR is opened
-    branches: # Two conditions, opened and pointing to main
-      - main
-  workflow_dispatch: # No mandatory configuration
-  push:
-    branches: # Using filters, to trigger the workflow under specfic 
-      - main
-      - 'dev-*' # 
-      - 'feat/**'
-    # paths: # To specify changes in a specific path to trigger the workflow
-    paths-ignore: # To prevent the workflow to be trigerred when there're changes in this file
-      - '.github/workflows/*'
+  # pull_request: # Managing a specific event
+  #   types:
+  #     - opened # Will trigger the workflow when a new PR is opened
+  #   branches: # Two conditions, opened and pointing to main
+  #     - main
+  workflow_dispatch: # No mandatory configuration, MANUALLY TO CONTINUE WITH OTHER WORKFLOWS
+  # push:
+  #   branches: # Using filters, to trigger the workflow under specfic 
+  #     - main
+  #     - 'dev-*' # 
+  #     - 'feat/**'
+  #   # paths: # To specify changes in a specific path to trigger the workflow
+  #   paths-ignore: # To prevent the workflow to be trigerred when there're changes in this file
+  #     - '.github/workflows/*'
 jobs:
   deploy:
     runs-on: ubuntu-latest

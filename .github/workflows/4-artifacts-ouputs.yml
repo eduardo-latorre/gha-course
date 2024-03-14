@@ -5,9 +5,10 @@
 # Using Github expression ${{ expression-name }}
 name: 4 Artifacts and Outputs
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch: # MANUALLY TO CONTINUE WITH OTHER WORKFLOWS
+  # push:
+  #   branches:
+  #     - main
 jobs:
   tests:
     runs-on: ubuntu-latest

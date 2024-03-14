@@ -34,7 +34,8 @@
 # DEPENDENCIES
 # The software used to run stuff has already intalled dependencies, like node for instance
 name: 1 Deploy Project
-on: [push, workflow_dispatch] # Multiple events, add manual button
+on: workflow_dispatch # MANUALLY TO CONTINUE WITH OTHER WORKFLOWS
+# on: [push, workflow_dispatch] # Multiple events, add manual button
 jobs:
   first-job: 
     runs-on: ubuntu-latest
