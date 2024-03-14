@@ -1,4 +1,8 @@
 # 5 chapter is on gha-course-2 repo
+
+# If contition, steps context documentation used
+# Special contions functions in Github
+# - failure(), success(), always(), cancelled()
 name: 6 Controlling Workflow & Execution
 on:
   push:
@@ -33,9 +37,14 @@ jobs:
           key: npm-deps-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
         run: npm ci
+      # Failing this step to be handle in the next step
       - name: Test code
+        id: run-tests # Giving the id to be used in valitation, next step
         run: npm run test
+      # If last step succeeds, this step will be skipped
       - name: Upload test report
+        # Combining both conditional
+        if: failure() && steps.run-tests.outcome == 'failure' # Using step context to compare the outcome
         uses: actions/upload-artifact@v3
         with:
           name: test-report
