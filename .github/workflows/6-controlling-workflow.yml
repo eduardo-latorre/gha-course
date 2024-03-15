@@ -11,9 +11,9 @@
 # Matrix strategies
 name: 6 Controlling Workflow & Execution
 on:
-  push:
-    branches:
-      - main
+  # push:
+  #   branches:
+  #     - main
   workflow_dispatch:
 jobs:
   test:

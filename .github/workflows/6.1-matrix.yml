@@ -1,6 +1,6 @@
 # Matrix, allows to set multiple values
 # Github Action will execute all combination set in the matrix
-name: Matrix Demo
+name: 6.1 Matrix Demo
 on:
   push:
 jobs:
@@ -14,6 +14,7 @@ jobs:
         inclue: 
           - node-version: 18
             operation-system: ubuntu-latest
+        # To exclude specific combinations
         exclude:
           - node-version: 16
             operation-system: windows-latest

@@ -1,0 +1,8 @@
+name: 6.2 Reusable Workflow
+on: workflow_call # Allows to be called from other workflow
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output Information
+        run: echo "Deploying & Uploading"
