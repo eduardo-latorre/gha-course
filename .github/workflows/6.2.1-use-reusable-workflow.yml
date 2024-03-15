@@ -50,7 +50,10 @@ jobs:
           path: dist
   deploy:
     needs: build
+    # Calling the reusable workflow
     uses: ./.github/workflows/6.2-reusable-workflow.yml
+    with: 
+      artifact-name: dist-files # Providing the artifact name to the reusable workflow
   report:
     needs: [deploy]
     if: failure()
