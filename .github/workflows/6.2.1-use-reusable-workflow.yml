@@ -54,6 +54,15 @@ jobs:
     uses: ./.github/workflows/6.2-reusable-workflow.yml
     with: 
       artifact-name: dist-files # Providing the artifact name to the reusable workflow
+    # How to pass secret to reusable workflow
+    # secrets:
+    #   some-secrets: ${{ secrets.some-secret }}
+  print-deploy-result:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print deploy output
+        run: echo "${{ needs.deploy.outputs.result }}" # Prints the output from reusable workflow
   report:
     needs: [deploy]
     if: failure()

@@ -8,8 +8,20 @@ on:
         required: true
         type: string
         default: dist
+    # Using passing back value as outputs
+    outputs:
+      result:
+        description: The result of the operation
+        value: ${{ jobs.deploy.outputs.outcome }} # Linking the output from deploy job
+    # How to pass secrets
+    # secrets:
+    #   some-secrets:
+    #     required: false
 jobs:
   deploy:
+    outputs:
+      # Getting the value from set-result step as an output
+      outcome: ${{ steps.set-result.outputs.set-result }} 
     runs-on: ubuntu-latest
     steps:
       - name: Get Code
@@ -18,3 +30,6 @@ jobs:
           name: ${{ inputs.artifact-name }} # Passing the value
       - name: Output Information
         run: echo "Deploying & Uploading"
+      - name: Set result output # Storing the retrieving value to outout reusuable workflow
+        id: set-result
+        run: echo "step-result=success" >> &GITHUB_OUTPUT
