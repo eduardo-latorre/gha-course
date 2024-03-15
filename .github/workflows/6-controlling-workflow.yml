@@ -3,6 +3,12 @@
 # If contition, steps context documentation used
 # Special contions functions in Github
 # - failure(), success(), always(), cancelled()
+
+# Continue on Error, is a boolean function, that allows to continue even failing
+# - continue-on-error
+# - The conclusion is still sucess even if it fails
+
+# Matrix strategies
 name: 6 Controlling Workflow & Execution
 on:
   push:
@@ -27,6 +33,7 @@ jobs:
         run: npm ci
       # Failing this step to be handle in the next step
       - name: Test code
+        continue-on-error: false # Is set to false, but if it was true, will allow continue on error
         id: run-tests # Giving the id to be used in valitation, next step
         run: npm run test
       # If last step succeeds, this step will be skipped
