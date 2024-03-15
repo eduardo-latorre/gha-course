@@ -1,8 +1,20 @@
+# Used from another workflow
 name: 6.2 Reusable Workflow
-on: workflow_call # Allows to be called from other workflow
+on: 
+  workflow_call: # Allows to be called from other workflow
+    inputs: # Whatever you need and name
+      artifact-name:
+        description: The name of the artifact
+        required: true
+        type: string
+        default: dist
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Get Code
+        uses: actions/download-artifact@v3
+        with:
+          name: ${{ inputs.artifact-name }} # Passing the value
       - name: Output Information
         run: echo "Deploying & Uploading"
