@@ -18,9 +18,11 @@ jobs:
         id: cache
         uses: actions/cache@v3
         with:
-          path: ~/.npm
-          key: npm-deps-${{ hashFiles('**/package-lock.json') }}
+          path: node_modules
+          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
+        # steps.[ id ].outputs.cache-hit to check if the cache has been used
+        if: steps.cache.outputs.cache-hit != 'true' # If not, it will install the dependencies
         run: npm ci
       # Failing this step to be handle in the next step
       - name: Test code
@@ -44,9 +46,10 @@ jobs:
         id: cache
         uses: actions/cache@v3
         with:
-          path: ~/.npm
+          path: node_modules
           key: deps-node-module-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
       - name: Build website
         run: npm run build
