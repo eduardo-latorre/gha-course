@@ -2,7 +2,7 @@
 # Github Action will execute all combination set in the matrix
 name: 6.1 Matrix Demo
 on:
-  push:
+  workflow_call:
 jobs:
   build:
     continue-on-error: true # To keep executing even if some combination fail
