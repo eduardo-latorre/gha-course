@@ -18,8 +18,11 @@ on:
   issues:
     types:
       - opened
+# permissions: For all jobs
 jobs:
   assign-label:
+    permissions:
+      issues: write
     runs-on: ubuntu-latest
     steps:
       - name: Assign label
