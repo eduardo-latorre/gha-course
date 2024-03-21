@@ -13,11 +13,6 @@
 
 # Permission Issues
 # - Set enough perimissions, like "read-only"
-
-# This Job can be injected
-
-# Create an issue and set this title:
-# a";echo I've injected code"
 name: 9.1 Label Issues (Permissions Example)
 on:
   issues:
