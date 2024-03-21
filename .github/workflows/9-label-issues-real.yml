@@ -1,4 +1,4 @@
-name: Label Issues (Permissions Example)
+name: 9 Label Issues (Permissions Example)
 on:
   issues:
     types:
