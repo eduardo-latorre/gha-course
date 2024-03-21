@@ -1,0 +1,40 @@
+# Security
+# Script Injection: Values injeted in you workflow
+# - Issue title with a shell command
+# - To prevent these attacks, it can be used Actions, and env
+#   variables and prevent using github vars in the run section 
+
+# Malicious Third-Party Actions
+# - Action can perform potential malicious
+# - Only trusted Action must be used
+# - Used verfied creator actions, blue checkmark, GitHub team approved it
+# - Analize the code behind that action
+# - GitHub does not monitor action
+
+# Permission Issues
+# - Set enough perimissions, like "read-only"
+
+# This Job can be injected
+
+# Create an issue and set this title:
+# a";echo I've injected code"
+name: 9.1 Label Issues (Permissions Example)
+on:
+  issues:
+    types:
+      - opened
+jobs:
+  assign-label:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Assign label
+        if: contains(github.event.issue.title, 'bug')
+        run: |
+          curl -X POST \
+          --url https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.issue.number }}/labels \
+          -H 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
+          -H 'content-type: application/json' \
+          -d '{
+              "labels": ["bug"]
+            }' \
+          --fail

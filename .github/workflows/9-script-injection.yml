@@ -1,0 +1,30 @@
+# To use the example:
+# Open a new issue with whatever name
+# (The workflow will just evaluate if the title containes
+# the word "bug")
+# So it should only print the issue title
+
+# This Job can be injected
+
+# Create an issue and set this title:
+# a";echo I've injected code"
+name: 9 Label Issues (Script Injection Example)
+on:
+  issues:
+    types:
+      - opened
+jobs:
+  assign-label:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Assign label
+        env: 
+          TITLE: ${{ github.event.issue.title }}
+        run: |
+          # issue_title="${{ github.event.issue.title }}"
+          # if [[ "$issue_title" == *"bug"* ]]; then
+          if [[ "$TITLE" == *"bug"* ]]; then
+          echo "Issue is about a bug!"
+          else
+          echo "Issue is not about a bug"
+          fi
