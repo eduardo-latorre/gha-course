@@ -13,15 +13,26 @@
 
 # Permission Issues
 # - Set enough perimissions, like "read-only"
+# - If permission is not set, every user can perform everything
+# - Setting workflow permissions is just a another security layer
+
+# GITHUB_TOKEN
+# Is autogenarated by Github, it's valid until jobs are done
+# according the permissions, it will be linked to GitHub Token
+# Token worked under the hood when checkout repos
+
+# OpenID Connect
+# Dynamically request permissions to the provider
+# It's a restrictive permission that works for a certain period of time
 name: 9.1 Label Issues (Permissions Example)
 on:
   issues:
     types:
       - opened
-# permissions: For all jobs
+# permissions: To apply for all jobs
 jobs:
   assign-label:
-    permissions:
+    permissions: # Checkout the docs to see more permissions
       issues: write
     runs-on: ubuntu-latest
     steps:

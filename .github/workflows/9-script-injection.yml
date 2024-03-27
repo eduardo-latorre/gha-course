@@ -10,9 +10,10 @@
 # a";echo I've injected code"
 name: 9 Label Issues (Script Injection Example)
 on:
-  issues:
-    types:
-      - opened
+  workflow_dispatch: 
+  # issues: # Removed for move on
+  #   types:
+  #     - opened
 jobs:
   assign-label:
     runs-on: ubuntu-latest
